@@ -1,6 +1,13 @@
 // content.js
 
-function moveReplyButton() {
+function moveReplyButtons() {
+    // Move Cancel button
+    const cancelButtons = $('button[data-testid="comment-cancel-button"]');
+    cancelButtons.each(function () {
+        $(this).addClass('custom-cancel-button');
+    });
+
+    // Move Reply button
     const replyButtons = $('button:contains("Reply to customer")');
     replyButtons.each(function () {
         $(this).addClass('custom-reply-button');
@@ -31,13 +38,16 @@ function observeDOM() {
     // Create a MutationObserver to watch for changes in the DOM
     const observer = new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
-            moveReplyButton();
+            moveReplyButtons();
         });
     });
 
     // Define the type of mutations to observe (childList for added/removed nodes) then start observing the target node for configured mutations
     const config = { childList: true, subtree: true };
     observer.observe(targetNode, config);
+
+    // Run once immediately to catch existing buttons
+    moveReplyButtons();
 }
 
 observeDOM();

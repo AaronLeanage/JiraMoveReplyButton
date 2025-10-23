@@ -3,3 +3,9 @@
     right: 0 !important;
     padding-right: 45px !important;
 }
+
+.custom-cancel-button {
+    position: absolute !important;
+    right: 0 !important;
+    margin-right: 45px !important;
+}
